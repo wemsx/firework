@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新年快乐</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="favicon.png">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+
+<body>
+    <canvas id="fireworksCanvas" width="800" height="600"></canvas>  
+    <h1>
+    <span class="pen">
+        <div id="name">
+        </div>
+    </span>
+    <br>
+    启一元复始，待四序更新
+    <br>
+    新年快乐 🎉🎉
+    </h1>
+
+    <div id="copyright">
+        <p>copyright © 2024 wemsx</p>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var url_query = url.searchParams.get('param');
+
+        if (url_query != 'null') {
+            var name_string = decodeURI(atob(url_query));
+            document.getElementById("name").innerHTML = name_string + ' ,';
+        } else {
+            document.getElementById("name").innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>
