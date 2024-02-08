@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+    <div id="app">
+        <input v-model="msg.name"><br />
+        <div id="wrapper" v-if="params"><input v-model="msg.e"></div>
+        <p>{{ output }}</p>
+    </div>
+
+    <script>
+        const { createApp, reactive, computed } = Vue
+
+        const url = new URL(window.location.href)
+        let params = url.searchParams.get('wemsx')
+
+        createApp({
+            setup() {
+                const msg = reactive({
+                    name: 'wemsx',
+                    e: 'Happy new year!'
+                })
+                const output = computed(() => {
+                    return 'https://wemsx.cn/firework?vme50=' + encodeURIComponent(btoa(JSON.stringify(msg)))
+                })
+                return {
+                    output,
+                    msg,
+                    params
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

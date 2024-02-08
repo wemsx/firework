@@ -5,32 +5,28 @@
     <meta charset="UTF-8">
     <title>新年快乐</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 
 <body>
-    <canvas id="fireworksCanvas" width="800" height="600"></canvas>  
-    <h1>
-    <span class="pen">
-        <div id="name">
-        </div>
-    </span>
-    <br>
-    启一元复始，待四序更新
-    <br>
-    新年快乐 🎉🎉
-    </h1>
+    <canvas id="fireworksCanvas" width="800" height="600"></canvas>
+    <div id="text">
+        <span id="pen">
+        </span>,
+        <br>
+        <div id="greeting"></div>
+        新年快乐 🎉🎉
+    </div>
 
     <div id="copyright">
-        <p>copyright © 2024 wemsx</p>
+        <p>copyright © 2024 haoyuan</p>
     </div>
 
     <script src="js/script.js"></script>
-    <script>
-        document.getElementById("name").innerHTML = 'wemsx';
-    </script>
+    <script src="js/vme50.js"></script>
 </body>
 
 </html>
