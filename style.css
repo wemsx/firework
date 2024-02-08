@@ -35,7 +35,7 @@ h1 {
   top: 50%;
   left: 50%;
   text-align: center;
-  height: 20vh;
+  height: 20vw;
   width: 80vw !important;
   font-size: 5vw;
   transform: translate(-50%,-50%);
