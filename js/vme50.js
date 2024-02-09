@@ -5,7 +5,7 @@ if (qurey) {
     atob(decodeURIComponent(qurey))
   );
   document.getElementById("pen").innerHTML = k.name;
-  document.getElementById("special").innerHTML = k.e
+  document.getElementById("special").innerHTML = decodeURIComponent(k.e)
 } else {
   document.getElementById("pen").innerHTML = "正在看这里的你";
 }

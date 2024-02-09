@@ -67,12 +67,16 @@
       setup() {
         const msg = reactive({
           name: "wemsx",
-          e: encodeURIComponent("新年快乐 🎉🎉"),
+          e: "新年快乐 🎉🎉",
         });
         const output = computed(() => {
+          let massage = {
+            name: msg.name,
+            e: encodeURIComponent(msg.e)
+          }
           return (
             "https://wemsx.cn/firework?vme50=" +
-            encodeURIComponent(btoa(JSON.stringify(msg)))
+            encodeURIComponent(btoa(JSON.stringify(massage)))
           );
         });
         return {
