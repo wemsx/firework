@@ -2,7 +2,7 @@ const url = new URL(window.location.href);
 let qurey = url.searchParams.get("vme50");
 if (qurey) {
   let k = JSON.parse(
-    atob(decodeURIComponent(qurey))
+    decodeURIComponent(qurey)
   );
   document.getElementById("pen").innerHTML = k.name;
   document.getElementById("special").innerHTML = decodeURIComponent(k.e)
