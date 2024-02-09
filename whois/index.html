@@ -23,9 +23,11 @@
       justify-content: center;
     }
 
-    #urlOpt {
+    .urlOpt {
+      width: 50vw;
       word-wrap: break-word;
-      word-break: normal;
+      word-break: break-all;
+      white-space: normal;
     }
 
     input {
@@ -44,15 +46,15 @@
       box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
     }
   </style>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 </head>
 
 <body>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
   <div id="app">
     <input v-model="msg.name" /><br />
     <div id="wrapper" v-if="params"><input v-model="msg.e" /></div>
-    <p class="urlOpt" @click="document.execCommand('Copy')">{{ output }}</p>
+    <p class="urlOpt">{{ output }}</p>
   </div>
 
   <script>
@@ -65,7 +67,7 @@
       setup() {
         const msg = reactive({
           name: "wemsx",
-          e: "新年快乐 🎉🎉",
+          e: encodeURIComponent("新年快乐 🎉🎉"),
         });
         const output = computed(() => {
           return (
