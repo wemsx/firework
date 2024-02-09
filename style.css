@@ -9,23 +9,6 @@ body {
   overflow: hidden;
   user-select: none;
 }
-
-/*h1 {
-  z-index: 1000;
-  position: fixed;
-  top: 55%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-100%);
-  font-size: 1.8rem;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  padding: 0.5rem 0.8rem;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 1rem;
-  word-wrap: break-word;
-  word-break: break-all;
-  overflow: hidden;
-  white-space: nowrap;
-}*/
 h1 {
     font-size: 1.8rem;
 }
@@ -52,6 +35,11 @@ span#pen {
   position: relative;
   display: inline-block;
   animation: drop 1s;
+}
+
+#wantSomthing {
+  color: aliceblue;
+  margin: auto;
 }
 
 canvas {

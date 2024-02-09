@@ -1,79 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>火药填装器</title>
-    <style>
-      body {
-        height: 100vh;
-        background-color: #e8e8e8;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
 
-      #app {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>火药填装器</title>
+  <style>
+    body {
+      height: 100vh;
+      background-color: #e8e8e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-      input {
-        border: none;
-        outline: none;
-        border-radius: 15px;
-        padding: 1em;
-        background-color: #ccc;
-        box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
-        transition: 300ms ease-in-out;
-      }
+    #app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-      input:focus {
-        background-color: rgb(232, 232, 232);
-        transform: scale(1.05);
-        box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
-      }
-    </style>
-  </head>
+    #urlOpt {
+      word-wrap: break-word;
+      word-break: normal;
+    }
 
-  <body>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    input {
+      border: none;
+      outline: none;
+      border-radius: 15px;
+      padding: 1em;
+      background-color: #ccc;
+      box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+      transition: 300ms ease-in-out;
+    }
 
-    <div id="app">
-      <input v-model="msg.name" /><br />
-      <div id="wrapper" v-if="params"><input v-model="msg.e" /></div>
-      <p>{{ output }}</p>
-    </div>
+    input:focus {
+      background-color: rgb(232, 232, 232);
+      transform: scale(1.05);
+      box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
+    }
+  </style>
+</head>
 
-    <script>
-      const { createApp, reactive, computed } = Vue;
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
-      const url = new URL(window.location.href);
-      let params = url.searchParams.get("wemsx");
+  <div id="app">
+    <input v-model="msg.name" /><br />
+    <div id="wrapper" v-if="params"><input v-model="msg.e" /></div>
+    <p class="urlOpt" @click="document.execCommand('Copy')">{{ output }}</p>
+  </div>
 
-      createApp({
-        setup() {
-          const msg = reactive({
-            name: "wemsx",
-            e: "Happy new year!",
-          });
-          const output = computed(() => {
-            return (
-              "https://wemsx.cn/firework?vme50=" +
-              encodeURIComponent(btoa(JSON.stringify(msg)))
-            );
-          });
-          return {
-            output,
-            msg,
-            params,
-          };
-        },
-      }).mount("#app");
-    </script>
-  </body>
+  <script>
+    const { createApp, reactive, computed } = Vue;
+
+    const url = new URL(window.location.href);
+    let params = url.searchParams.get("wemsx");
+
+    createApp({
+      setup() {
+        const msg = reactive({
+          name: "wemsx",
+          e: "Happy new year!",
+        });
+        const output = computed(() => {
+          return (
+            "https://wemsx.cn/firework?vme50=" +
+            encodeURIComponent(btoa(JSON.stringify(msg)))
+          );
+        });
+        return {
+          output,
+          msg,
+          params
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
 </html>
