@@ -1,9 +1,11 @@
 const url = new URL(window.location.href);
 let qurey = url.searchParams.get("vme50");
 if (qurey) {
-  document.getElementById("pen").innerHTML = JSON.parse(
+  let k = JSON.parse(
     atob(decodeURIComponent(qurey))
-  ).name;
+  );
+  document.getElementById("pen").innerHTML = k.name;
+  document.getElementById("special").innerHTML = k.e
 } else {
   document.getElementById("pen").innerHTML = "正在看这里的你";
 }
