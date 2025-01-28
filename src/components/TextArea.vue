@@ -8,7 +8,7 @@
         <div class="greeting" v-if="!answer">或许是服务欠费了？</div>
         <div class="greeting" v-if="!answer">真是可恶，偏偏是这个时候...</div>
         <div id="special">{{ answer ? '以及，' : '反正，' }}新年快乐 🎉🎉</div><br />
-        <div id="note">—— 来自：wemsx</div>
+        <div id="note">—— <a  href="https://wemsx.cn/firework" target="_blank">来自：wemsx</a></div>
 </template>
 <script setup>
 import OpenAI from "openai";
@@ -16,7 +16,7 @@ import { ref } from "vue";
 
 const openai = new OpenAI({
         baseURL: 'https://api.deepseek.com',
-        apiKey: 'sk-249094e27df04195b7a194188002890f',//最后一位改了
+        apiKey: 'sk-249094e27df04195b7a194188002890e',//最后一位改了
         dangerouslyAllowBrowser: true
 });
 //sk-249094e27df04195b7a194188002890e
@@ -43,9 +43,12 @@ main();
 
 let params = new URLSearchParams(window.location.search);
 
+let deco = JSON.parse(
+    decodeURIComponent(atob(params.get('wemsx')))
+  )
 let person = {
-        name: params.get('name') ? params.get('name') : '看到这里的你',
-        keywords: params.get('key').split(',')
+        name: deco.name ? deco.name : '看到这里的你',
+        keywords: deco.key.split(',')
 }
 </script>
 <style scoped>
@@ -58,7 +61,7 @@ let person = {
 }
 #tag {
         border-radius: 8px;
-        background-color: rgba(79, 192, 141, 0.3);/**rgba(79, 192, 141, 0.3) */
+        background-color: rgba(79, 106, 215, 0.3);/**rgba(79, 192, 141, 0.3) */
         padding: 4px 8px;
         height: 20px;
         margin-right: 10px;
@@ -72,4 +75,24 @@ let person = {
         font-size: 1.5rem;
         width: 120%;
 }
+a {
+        text-decoration: none;
+        white-space: nowrap;
+        color: #F7F7F7;
+        position: relative;
+      }
+      a:after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 66%;
+        left: -0.1em;
+        right: -0.1em;
+        bottom: 0;
+        transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
+        background-color: rgba(79, 192, 141, 0.5);
+      }
+      a:hover:after {
+        top: 0%;
+      }
 </style>

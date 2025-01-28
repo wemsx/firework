@@ -53,15 +53,12 @@
 
   <div id="app">
     <input v-model="msg.name" /><br />
-    <div id="wrapper" v-if="params"><input v-model="msg.e" /></div>
+    <input v-model="msg.key" />
     <p class="urlOpt">{{ output }}</p>
   </div>
 
   <script>
     const { createApp, reactive, computed } = Vue;
-
-    const url = new URL(window.location.href);
-    let params = url.searchParams.get("wemsx");
 
     createApp({
       setup() {
@@ -72,17 +69,16 @@
         const output = computed(() => {
           let massage = {
             name: msg.name,
-            e: encodeURIComponent(msg.e)
+            key: msg.key
           }
           return (
-            "https://wemsx.cn/firework?vme50=" +
+            "https://wemsx.cn/firework?wemsx=" +
             btoa(encodeURIComponent(JSON.stringify(massage)))
           );
         });
         return {
           output,
-          msg,
-          params
+          msg
         };
       },
     }).mount("#app");
