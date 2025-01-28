@@ -5,10 +5,11 @@
                         <span id="sharp">#</span> {{ tag }}
                 </span>
         </div>
+        <div class="greeting" v-if="answer">{{ answer }}</div>
         <div class="greeting" v-if="!answer">或许是服务欠费了？</div>
         <div class="greeting" v-if="!answer">真是可恶，偏偏是这个时候...</div>
         <div id="special">{{ answer ? '以及，' : '反正，' }}新年快乐 🎉🎉</div><br />
-        <div id="note">—— <a  href="https://wemsx.cn/firework" target="_blank">来自：wemsx</a></div>
+        <div id="note">—— <a  href="https://wemsx.cn/firework/about" target="_blank">来自：wemsx</a></div>
 </template>
 <script setup>
 import OpenAI from "openai";
@@ -16,11 +17,9 @@ import { ref } from "vue";
 
 const openai = new OpenAI({
         baseURL: 'https://api.deepseek.com',
-        apiKey: 'sk-249094e27df04195b7a194188002890e',//最后一位改了
+        apiKey: 'sk-249094e27df04195b7a194188002890e',
         dangerouslyAllowBrowser: true
 });
-//sk-249094e27df04195b7a194188002890e
-// curl -L -X GET 'https://api.deepseek.com/user/balance' -H 'Accept: application/json' -H 'Authorization: Bearer sk-249094e27df04195b7a194188002890e'
 const answer = ref('')
 
 async function main() {
