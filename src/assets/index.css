@@ -1,0 +1,14 @@
+html,
+body {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0px;
+  margin: 0px;
+  background: #222;
+  font-family: "LXGW WenKai Screen", sans-serif;
+  color: #fff;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
